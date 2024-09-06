@@ -1,29 +1,23 @@
 package Tests;
 
-import Bases.TestBase;
+import API.Builders.Store.OrderPayloadBuilder;
+import API.Endpoints.Store.OrderEndPoint;
 import org.testng.annotations.Test;
 
+public class StoreTests{
 
-import java.io.IOException;
-
-import static io.restassured.RestAssured.*;
-
-public class StoreTests extends TestBase {
+    private final OrderEndPoint orderEndPoint = new OrderEndPoint();
 
     @Test
-    public void StoreOrderSuccess() throws IOException {
+    public void CreateOrder(){
+        OrderPayloadBuilder orderPayload = new OrderPayloadBuilder()
+                .withQuantity(5)
+                .withQuantity(10)
+                .withComplete(true)
+                .withStatus("placed");
 
-        String JsonBody = ReadJson("StoreJsons/Order.Json");
-
-        given()
-                .contentType("application/json")
-               .body(JsonBody)
-        .when()
-                .post(BaseUrl + "store/order")
-        .then()
-                .log().body(true)
-                .statusCode(200)
-                ;
-
+        orderEndPoint.createOrder(orderPayload.build())
+                .then()
+                .statusCode(200);
     }
 }

@@ -1,0 +1,39 @@
+package API.Endpoints.Pet;
+
+import API.Factory.Enviroment;
+import io.restassured.response.Response;
+
+import java.util.Map;
+
+import static API.Factory.RequestFactory.CreateRequest;
+
+public class PetEndPoint {
+    private static final String BASE_URL = Enviroment.BaseUrl;
+
+    public Response CreatePet(Map<String, Object> PetPayLoad) {
+        return CreateRequest()
+                .baseUri(BASE_URL + "/pet")
+                .body(PetPayLoad)
+                .when()
+                .post();
+    }
+
+    public Response UpdatePet(Map<String, Object> PetPayLoad) {
+        return CreateRequest()
+                .baseUri(BASE_URL + "/pet")
+                .body(PetPayLoad)
+                .when()
+                .put();
+    }
+
+    public Response FindPetByStatus(String status) {
+        return CreateRequest()
+                .baseUri(BASE_URL + "/pet")
+                .queryParam("status",status)
+                .when()
+                .get();
+    }
+
+
+
+}
