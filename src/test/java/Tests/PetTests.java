@@ -9,7 +9,7 @@ public class PetTests {
     private final PetEndPoint petEndPoint = new PetEndPoint();
 
     @Test
-    public void CreatePet(){
+    public void CreatePet() {
 
 
         String[] photoUrls = {"https://i0.statig.com.br/bancodeimagens/78/pt/gs/78ptgsfeddfh638dkkzya5p3y.jpg"};
