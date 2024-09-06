@@ -11,7 +11,7 @@ import static java.nio.file.Files.readAllBytes;
 
 public class TestBase {
 
-    public String BaseUrl = "https://petstore.swagger.io/";
+    public String BaseUrl = "https://petstore.swagger.io/v2/";
     public String ProjectPath = System.getProperty("user.dir");
 
     public String ReadJson(String Path) throws IOException {

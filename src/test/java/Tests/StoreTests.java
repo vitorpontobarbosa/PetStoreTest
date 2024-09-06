@@ -17,13 +17,13 @@ public class StoreTests extends TestBase {
 
         given()
                 .contentType("application/json")
-                .log().all()
-                .body(JsonBody)
+               .body(JsonBody)
         .when()
-                .post(BaseUrl + "/store/order")
+                .post(BaseUrl + "store/order")
         .then()
-                .log().all()
-                .statusCode(200);
+                .log().body(true)
+                .statusCode(200)
+                ;
 
     }
 }
