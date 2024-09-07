@@ -1,14 +1,14 @@
 package API.Endpoints;
 
-import API.Factory.Enviroment;
-import io.restassured.response.Response;
 
+import io.restassured.response.Response;
 import java.util.Map;
 
+import static API.Factory.Enviroment.BaseUrl;
 import static API.Factory.RequestFactory.CreateRequest;
 
 public class PetEndPoint {
-    private static final String BASE_URL = Enviroment.BaseUrl;
+    private static final String BASE_URL = BaseUrl;
 
     public Response CreatePet(Map<String, Object> PetPayLoad) {
         return CreateRequest()
@@ -34,11 +34,18 @@ public class PetEndPoint {
                 .get();
     }
 
-    public Response FindPetById(int id) {
+    public Response FindPetById(String id) {
         return CreateRequest()
                 .baseUri(BASE_URL + "/pet")
                 .when()
                 .get("/" + id);
+    }
+
+    public Response DeletePet(String id) {
+        return CreateRequest()
+                .baseUri(BASE_URL + "/pet")
+                .when()
+                .delete("/" + id);
     }
 
 
