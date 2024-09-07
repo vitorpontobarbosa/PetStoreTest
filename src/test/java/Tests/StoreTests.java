@@ -21,7 +21,7 @@ public class StoreTests {
                 .statusCode(200)
                 .log().body(true)
                 .body("id",notNullValue())
-                .body("quantity", equalTo("200"))
-                .body("complete", equalTo("true"));
+                .body("quantity", equalTo(100))
+                .body("complete", equalTo(true));
     }
 }

@@ -24,7 +24,7 @@ public class PetTests {
         petIdResponse = petEndPoint.CreatePet(petPayload.build())
                 .then()
                 .log().body(true)
-                .statusCode(200)
+                .assertThat().statusCode(200)
                 .extract().path("id").toString();
 
     }
@@ -38,7 +38,7 @@ public class PetTests {
                 .statusCode(200);
     }
 
-    @Test(dependsOnMethods = {"CreatePet", "DeletePet"})
+    @Test(dependsOnMethods = {"DeletePet","CreatePet"},priority = 0)
     @Name( "Busca um pet inexistente")
     public void GetPetNotfound() {
         petEndPoint.FindPetById(petIdResponse)
@@ -56,7 +56,7 @@ public class PetTests {
                 .statusCode(200);
     }
 
-    @Test(dependsOnMethods = "CreatePet")
+    @Test(dependsOnMethods = "CreatePet", priority = 1)
     @Name( "Atualiza o pet")
     public void UpdatePet() {
         String[] photoUrls = {"cachorroUpdated.jpg"};
