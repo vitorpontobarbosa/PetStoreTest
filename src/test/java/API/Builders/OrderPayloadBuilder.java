@@ -1,4 +1,4 @@
-package API.Builders.Store;
+package API.Builders;
 
 import java.util.HashMap;
 import java.util.Map;

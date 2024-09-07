@@ -1,4 +1,4 @@
-package API.Endpoints.Pet;
+package API.Endpoints;
 
 import API.Factory.Enviroment;
 import io.restassured.response.Response;
@@ -32,6 +32,13 @@ public class PetEndPoint {
                 .queryParam("status",status)
                 .when()
                 .get();
+    }
+
+    public Response FindPetById(int id) {
+        return CreateRequest()
+                .baseUri(BASE_URL + "/pet")
+                .when()
+                .get("/" + id);
     }
 
 

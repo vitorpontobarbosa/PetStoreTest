@@ -1,7 +1,7 @@
 package Tests;
 
-import API.Builders.Store.OrderPayloadBuilder;
-import API.Endpoints.Store.OrderEndPoint;
+import API.Builders.OrderPayloadBuilder;
+import API.Endpoints.OrderEndPoint;
 import org.testng.annotations.Test;
 
 public class StoreTests{

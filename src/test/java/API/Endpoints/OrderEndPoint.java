@@ -1,4 +1,4 @@
-package API.Endpoints.Store;
+package API.Endpoints;
 
 import io.restassured.response.Response;
 

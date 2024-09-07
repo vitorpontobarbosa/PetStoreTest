@@ -1,7 +1,7 @@
 package Tests;
 
-import API.Builders.Pet.PetPayloadBuilder;
-import API.Endpoints.Pet.PetEndPoint;
+import API.Builders.PetPayloadBuilder;
+import API.Endpoints.PetEndPoint;
 import org.testng.annotations.Test;
 
 
@@ -10,10 +10,7 @@ public class PetTests {
 
     @Test
     public void CreatePet() {
-
-
-        String[] photoUrls = {"https://i0.statig.com.br/bancodeimagens/78/pt/gs/78ptgsfeddfh638dkkzya5p3y.jpg"};
-
+        String[] photoUrls = {"cachorro.jpg"};
 
         PetPayloadBuilder petPayload = new PetPayloadBuilder()
                 .withName("junin")
