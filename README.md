@@ -22,7 +22,7 @@ A escolha desse padrão foi feita por sua praticidade em facilitar futuras evolu
 #
 
 
-*Lembrete: Após baixar o projeto, atualizar as referencias maven.
+*** Lembrete: Após baixar o projeto, atualizar as referencias maven. ***
 
 
 
