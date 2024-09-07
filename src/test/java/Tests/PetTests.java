@@ -3,6 +3,7 @@ package Tests;
 import API.Builders.PetPayloadBuilder;
 import API.Endpoints.PetEndPoint;
 import API.Factory.GeneratorUtils;
+import jdk.jfr.Name;
 import org.testng.annotations.Test;
 
 
@@ -11,6 +12,7 @@ public class PetTests {
     private final PetEndPoint petEndPoint = new PetEndPoint();
 
     @Test
+    @Name( "Criar um novo pet")
     public void CreatePet() {
         String[] photoUrls = {"cachorro.jpg"};
 
@@ -28,6 +30,7 @@ public class PetTests {
     }
 
     @Test(dependsOnMethods = "CreatePet")
+    @Name( "Deletar um pet")
     public void DeletePet() {
         petEndPoint.DeletePet(petIdResponse)
                 .then()
@@ -36,6 +39,7 @@ public class PetTests {
     }
 
     @Test(dependsOnMethods = {"CreatePet", "DeletePet"})
+    @Name( "Busca um pet inexistente")
     public void GetPetNotfound() {
         petEndPoint.FindPetById(petIdResponse)
                 .then()
@@ -44,6 +48,7 @@ public class PetTests {
     }
 
     @Test(dependsOnMethods = "CreatePet")
+    @Name( "Busca Pet pelo Status Pending")
     public void GetPetPending() {
         petEndPoint.FindPetByStatus("pending")
                 .then()
@@ -52,6 +57,7 @@ public class PetTests {
     }
 
     @Test(dependsOnMethods = "CreatePet")
+    @Name( "Atualiza o pet")
     public void UpdatePet() {
         String[] photoUrls = {"cachorroUpdated.jpg"};
 
