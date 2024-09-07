@@ -1,7 +1,8 @@
 # Projeto de automação de testes de API (PetStore) 
-- Tecnologias utilizadas: Java - Rest Assured
+- Tecnologias utilizadas: Java - Rest Assured - TestNG
 - Padrão de projeto: Builder Pattern
-A escolha desse padrão foi feita por sua praticidade em facilitar futuras evoluções no projeto. Ele simplifica a criação de novas requisições e endpoints, evitando a necessidade de passar muitos parâmetros nos construtores, tornando o código mais flexível e fácil de manter.
+A escolha desse padrão foi feita por sua praticidade em facilitar futuras evoluções no projeto. Ele simplifica a criação de novas requisições e endpoints, evitando a necessidade de passar muitos parâmetros nos construtores, tornando o código mais flexível, de facil manutenibilidade e reaproveitamento de código.
+
 
 
 ## Explicação da estrutura
@@ -19,6 +20,10 @@ A escolha desse padrão foi feita por sua praticidade em facilitar futuras evolu
 - Enviroment aqui será possível encontrar variaveis utilizadas em todo o projeto.
 * Tests: Responsável por manter todos os testes organizados, separados por entidades. A partir dessa classe, chamamos todas as outras para criar uma request, enviar-la e verificamos seu retorno.
 #
+
+
+
+
 
 
 
