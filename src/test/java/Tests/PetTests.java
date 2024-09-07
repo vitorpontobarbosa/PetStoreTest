@@ -39,7 +39,7 @@ public class PetTests {
                 .statusCode(200);
     }
 
-    @Test(dependsOnMethods = {"DeletePet","CreatePet"},priority = 0)
+    @Test(dependsOnMethods = {"DeletePet","CreatePet"})
     @Name( "Busca um pet inexistente")
     public void GetPetNotfound() {
         petEndPoint.FindPetById(petIdResponse)
