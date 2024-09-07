@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 
 public class PetTests {
-    private String petIdResponse;
+    public static String petIdResponse;
     private final PetEndPoint petEndPoint = new PetEndPoint();
 
     @Test
@@ -16,9 +16,10 @@ public class PetTests {
 
         PetPayloadBuilder petPayload = new PetPayloadBuilder()
                 .withName(GeneratorUtils.generateString(5))
-                .withPhotoUrls(photoUrls);
+                .withPhotoUrls(photoUrls)
+                .withStatus("pending");
 
-        petIdResponse =  petEndPoint.CreatePet(petPayload.build())
+        petIdResponse = petEndPoint.CreatePet(petPayload.build())
                 .then()
                 .log().body(true)
                 .statusCode(200)
@@ -34,11 +35,35 @@ public class PetTests {
                 .statusCode(200);
     }
 
-    @Test(dependsOnMethods = {"CreatePet","DeletePet"})
+    @Test(dependsOnMethods = {"CreatePet", "DeletePet"})
     public void GetPetNotfound() {
         petEndPoint.FindPetById(petIdResponse)
                 .then()
                 .log().body(true)
                 .statusCode(404);
+    }
+
+    @Test(dependsOnMethods = "CreatePet")
+    public void GetPetPending() {
+        petEndPoint.FindPetByStatus("pending")
+                .then()
+                .log().body(true)
+                .statusCode(200);
+    }
+
+    @Test(dependsOnMethods = "CreatePet")
+    public void UpdatePet() {
+        String[] photoUrls = {"cachorroUpdated.jpg"};
+
+        PetPayloadBuilder petPayload = new PetPayloadBuilder()
+                .withName(GeneratorUtils.generateString(5))
+                .withPhotoUrls(photoUrls)
+                .withStatus("available")
+                .withId(petIdResponse);
+
+        petEndPoint.UpdatePet(petPayload.build())
+                .then()
+                .log().body(true)
+                .statusCode(200);
     }
 }

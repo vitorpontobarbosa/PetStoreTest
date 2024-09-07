@@ -28,7 +28,7 @@ public class PetEndPoint {
 
     public Response FindPetByStatus(String status) {
         return CreateRequest()
-                .baseUri(BASE_URL + "/pet")
+                .baseUri(BASE_URL + "/pet/findByStatus")
                 .queryParam("status",status)
                 .when()
                 .get();
