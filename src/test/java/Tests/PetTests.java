@@ -5,6 +5,7 @@ import API.Endpoints.PetEndPoint;
 import API.Factory.GeneratorUtils;
 import jdk.jfr.Name;
 import org.testng.annotations.Test;
+import static org.hamcrest.Matchers.*;
 
 
 public class PetTests {
@@ -53,7 +54,8 @@ public class PetTests {
         petEndPoint.FindPetByStatus("pending")
                 .then()
                 .log().body(true)
-                .statusCode(200);
+                .statusCode(200)
+                .body("status", hasItems("pending"));
     }
 
     @Test(dependsOnMethods = "CreatePet", priority = 1)

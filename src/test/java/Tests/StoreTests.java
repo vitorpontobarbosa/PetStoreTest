@@ -3,7 +3,6 @@ package Tests;
 import API.Builders.OrderPayloadBuilder;
 import API.Endpoints.OrderEndPoint;
 import org.testng.annotations.Test;
-
 import static org.hamcrest.Matchers.*;
 
 public class StoreTests {
